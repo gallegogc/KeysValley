@@ -1,0 +1,30 @@
+#main-box{
+    height: 43vw;
+    width: 43.5vw;
+    float: left;
+    background-color: #2e353d;
+}
+
+.scrollbar {
+    float: left;
+    overflow-y: scroll;
+}
+
+.brand {
+    font-size: 1.2vw;
+    line-height: 2.7vw;
+    display: block;
+    text-align: center;
+    color: white;
+  }
+
+.subbrand{
+    font-size: 0.9vw;
+    line-height: 1vw;
+    margin-bottom: 1vw;
+    display: block;
+    text-align: center;
+    color: white;
+}
+    
+  

@@ -1,0 +1,162 @@
+
+.contenidoBox{
+  overflow-y: auto;
+  height: 30vw;
+  width: 21.5vw;
+}
+
+#fichaBox{
+  height: 30vw;
+  width: 41.5vw;
+  margin: 0.6vw;
+  margin-bottom: 0.3vw;
+  float: left;
+  margin-top: 1.5vw;
+  }
+
+img{
+  height: 30vw;
+  width: 20vw;
+  float: left;
+}
+
+#tituloBox{
+  height: 2.3vw;
+  width: 19.5vw;
+  margin-top: 0.5vw;
+  margin-left: 1vw;
+  margin-right: 1vw;
+  float: left;
+  background-color: #23282e;
+  color: white;
+}
+
+#datosBox{
+  height: 7.5vw;
+  width: 19.5vw;
+  padding: 1vw;
+  margin: 1vw;
+  float: left;
+  text-align: left;
+  border: black 1px solid;
+  background-color: #2e353d;
+  color: white;
+}
+
+  #resenaBox{
+    height: fit-content;
+    width: 19.5vw;
+    padding: 1vw;
+    margin: 1vw;
+    margin-top: auto;
+    float: left;
+    text-align: left;
+    background-color: #2e353d;
+    color: white;
+    text-align: justify;
+    text-justify: inter-word;
+  }
+
+  /* PRECIO Y BOTÓN COMPRAR */
+
+  #precioBox{
+    height: 5vw;
+    width: 19.5vw;
+    padding: 0.2vw;
+    margin: 1vw;
+    margin-top: auto;
+    float: left;
+    text-align: left;
+    background-color: #2e353d;
+    color: white;
+    text-align: center;
+  }
+
+  .precioJuego{
+    font-size: 2.5vw;
+    font-weight: bold;
+    font-family: 'game played', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  #btnComprar{
+    position: relative;
+    bottom: 0vw;
+    height: 3vw;
+    width: 12vw;
+    font-size: 1.3vw;
+    padding: 0.2vw;
+    font-family: "gameplay";
+  }
+  
+  /* TITULO E ICONO PLATAFORMA */
+
+  .icono{
+    position: absolute;
+    top:-0.25vw;
+    left: -0.25vw;
+    width:2vw;
+    height: 2vw;
+    z-index: 1;
+  }
+
+  #etiquetaPlataforma{
+    position: absolute;
+    top: 0vw;
+    left: 0.6vw;
+    padding-left: 1.2vw;
+    padding-top: 0.25vw;
+    padding-right: 0.5vw;
+    width:fit-content;
+    border-radius: 1vw;
+    height: 1.5vw;
+    z-index: 0;
+  }
+
+  .tituloJuego{
+    font-size: 1vw;
+    font-weight: bold;
+    font-family: 'game played';
+  }
+
+  .tituloPlataforma{
+      color: white;
+      font-size: 0.7vw;
+      font-family: 'game played';
+  }
+
+  .textoFuerte{
+    font-size: 1vw;
+    font-family: 'game played';
+    text-align: left;
+  }
+  
+  .texto{
+    font-size: 0.8vw;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  .resenaJuego{
+    font-size: 0.8vw;
+  
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  #btnVolver{
+    height: 2vw;
+    width: 5vw;
+    position: relative;
+    margin-top: 1vw;
+    margin-bottom: 1vw;
+    right: -7.5vw;
+  }
+
+  .btn-primary{
+      font-size: 1vw;
+      padding: 0.2vw;
+      line-height: 2vw;
+  }
+  
+  
+  
+  
+  

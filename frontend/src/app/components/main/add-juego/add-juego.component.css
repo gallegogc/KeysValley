@@ -1,0 +1,24 @@
+#altaJuegoBox{
+    background-color: rgba(97, 137, 153, 0.603);
+    width: 40vw;
+    margin-top: 0.5vw;
+    margin: 0.5vw
+    }
+
+  .apartadoForm{
+    padding: 0vw;
+    margin: 0vw;
+  }
+
+  p{
+    padding-top: 1vw;
+    color: white;
+    font-weight: bold;
+  }
+
+  form button{
+    font-weight: bold;
+  }
+
+
+  

@@ -1,0 +1,78 @@
+<div id="fichaBox" class="card">
+    <img class="icono" src="{{iconPath}}" alt="Icono Plataforma">
+    <img class="card-img-top" src="{{imagePath}}" alt="Imagen juego">
+
+    <!-- LA ETIQUETA CAMBIA DE COLOR CON UN ngStyle, ASOCIAMOS EL background-color CON EL VALOR DE LA VARIABLE colorLabel -->
+    <div id="etiquetaPlataforma" [ngStyle]="{'background-color': colorLabel}">
+        <span class="tituloPlataforma">
+            {{juego.plataforma}}
+        </span>
+    </div>
+    <div class="card-body text-center contenidoBox">
+        <div id="tituloJuegoBox">
+            <div id=tituloBox>
+                <h5 class="tituloJuego">
+                    {{juego.nombre}}
+                </h5>
+            </div>
+
+            <div id=datosBox>
+                <span class="texto">
+                    Desarrollador:
+                </span>
+                <span class="textoFuerte">
+                    {{juego.desarrolladora}}
+                </span>
+                <br>
+                <span class="texto">
+                    Plataforma:
+                </span>
+                <span class="textoFuerte">
+                    {{juego.plataforma}}
+                </span>
+                <br>
+                <span class="texto">
+                    Género:
+                </span>
+                <span class="textoFuerte">
+                    {{juego.genero}}
+                </span>
+                <br>
+                <span class="texto">
+                    Año de lanzamiento:
+                </span>
+                <span class="textoFuerte">
+                    {{juego.lanzamiento}}
+                </span>
+                <br>
+            </div>
+
+            <div id=resenaBox>
+                <span class="resenaJuego">
+                    {{juego.resena}}
+                </span>
+            </div>
+
+            <div id="precioBox">
+                <span class="texto">
+                    Por sólo:
+                </span>
+                <span class="precioJuego">
+                    {{juego.precio}}€
+                </span>
+
+                <!-- SI HAY STOCK DEL JUEGO PONEMOS UN BOTÓN CON ngClick a comprar() -->
+                <ng-container *ngIf="juego.stock>0; else sinStock">
+                    <a href="#" (click)="comprar()" id="btnComprar" class="boton btn btn-primary">Comprar</a>
+                </ng-container>
+                <!-- SINO UN BOTÓN DESHABILITADO -->
+                <ng-template #sinStock>
+                    <a href="#" id="btnComprar" class="boton btn btn-primary" disabled>Sin Stock</a>
+                </ng-template>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>

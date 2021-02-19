@@ -1,0 +1,43 @@
+#juegoBox{
+  height: 327px;
+  width: 150px;
+    margin: 0.6vw;
+    margin-bottom: 0.3vw;
+    float: left;
+}
+
+
+
+.icono{
+position: absolute;
+top:-0.25vw;
+left: -0.25vw;
+width:29px;
+height: 29px;
+}
+
+.boton{
+position: relative;
+top:3px;
+left: -4px;
+width: 158px;
+}
+
+img{
+  height: 210px;
+  width: 150px;
+}
+
+.imageDiv{
+  height: 210px;
+  width: 150px;
+}
+
+.tituloJuego{
+  font-size: 15px;
+  font-weight: bold;
+white-space: nowrap;
+display: block;
+text-overflow: ellipsis;
+
+}

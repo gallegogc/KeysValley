@@ -1,0 +1,58 @@
+/* CLASE DE FUENTE PARA TITULOS DE LOS APARTADOS LATERALES */
+.brand {
+  font-family: 'game played', 'gameplay', 'monospace';
+}
+
+/* DISEÑO DE SCROLLS */
+::-webkit-scrollbar-track {                     /* ESTILOS DE LA PLATAFORMA DONDE PUEDE DESLIZARSE EL SCROLL  */
+    background-color: #2e353d;
+    width: 0.7vw;	
+  }
+::-webkit-scrollbar {                           /* ESTILOS DE LA PLATAFORMA DONDE NO PUEDE LLEGAR A DESPLAZARSE EL SCROLL DESLIZABLE, POR FUERA DEL APARTADO ANTERIOR */
+    width: 0.7vw;	
+    background-color:  #2e353d;
+  }
+::-webkit-scrollbar-thumb {                     /* ESTILOS DE LA BARRA DESLIZABLE DEL SCROLL */
+    background-color: rgb(150, 150, 150);
+    border: 0.1vw solid rgb(41, 41, 41);
+}
+
+
+/* ESTILOS PARA LOS TOAST */
+
+/* ESTILO GENERAL PARA LOS TOAST */
+#toast-container {
+  top: 10vw;
+  right: 38vw;
+  bottom: 39vw;
+  left:37.4vw;  
+  font-size: 2vw;
+  text-align: center;
+}
+
+/* CLASES DE COLOR PARA LOS TOAST */
+.toastAmarillo{
+  background-color: rgb(153, 131, 35);
+}
+
+.toastRojo{
+  background-color: rgb(150, 59, 59);
+}
+
+.toastVerde{
+  background-color: rgb(59, 150, 71);
+}
+
+/* ESTILO DE SELECT Y OPTIONS DE LOS FORMULARIOS DE JUEGOS */
+select{
+  background-color: rgba(0, 0, 0, 0);
+  color: white;
+}
+option{
+  color: white;
+  background-color: rgb(82, 94, 112);
+}
+
+
+
+

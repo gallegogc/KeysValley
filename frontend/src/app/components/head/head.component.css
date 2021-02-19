@@ -1,0 +1,22 @@
+div{
+    width: 30vw;
+    height: 5.7vw;
+    font-weight: bold;
+    text-align: center;
+    font-family: 'game played', 'gameplay', 'monospace';
+    font-size: 2vw;
+    padding-top: 0.2vw;
+    margin-left: auto;
+    margin-right: auto;
+    color: rgb(255, 255, 255);
+}
+
+img{
+    position: absolute;
+    top: -0.3vw;
+    left: 41vw;
+    width: 17vw;
+    height: 6vw;
+    cursor: pointer;
+}
+

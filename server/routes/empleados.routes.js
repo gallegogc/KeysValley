@@ -1,0 +1,32 @@
+const express = require('express') // PARA LLAMAR AL MÓDULO EXPRESS
+const router = express.Router(); // ESTE MÉTODO DEVUELVE UN OBJETO QUE VAMOS A UTILIZAR
+
+// RECOGEMOS EL CONTROLADOR
+const controllerEmpleado = require('../controllers/empleados.controller');
+
+
+
+// GRACIAS A LAS RUTAS SEGUN HAGAMOS LOS METOSO GET, POST, PUT o DELETE SABREMOS QUE METODO DE CONTROLLER EJECUTAR
+// POR ESO SI EN POSTMAN HACEMOS UN GET SIN ESPECIFICAR DNI NOS DEVOLVERÁ TODOS
+// SI ESPECIFICAMOS NOS DEVOLVERÁ UN EMPLEADO
+// SI HACEMOS UN POST CREAREMOS UN EMPLEADO
+
+
+// HACEMOS QUE VAYA A LA RUTA POR DEFECTO Y LLAME AL METODO GETEMPLEADOS
+// CON ESTE MÉTODO OBTENDREMOS LOS DATOS DE TODOS LOS EMPLEADOS
+router.get('/', controllerEmpleado.getEmpleados);
+
+// EN ESTE QUE NOS MUESTRA SOLO LOS DATOS DE UN USUARIO VA A CAMBIAR UN POCO PORQUE HAY QUE ESPECIFICARLE
+// EL ID DEL USUARI QUE QUEREMOS
+router.get('/:id', controllerEmpleado.getEmpleado);
+
+// AHORA ESTE MÉTODO HAY QUE DEFINIRLO EN EL CONTROLADOR
+router.post('/', controllerEmpleado.crearEmpleado);
+
+// EDITAR UN EMPLEADO
+router.put('/:id', controllerEmpleado.editarEmpleado);
+
+router.delete('/:id', controllerEmpleado.borrarEmpleado);
+
+// TENEMOS QUE EXPORTAR EL MÓDULO PARA PODER UTILIZARLO EN EL INDEX
+module.exports = router;

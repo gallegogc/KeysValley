@@ -1,0 +1,32 @@
+<div id="listaVentasBox">
+    <table>
+        <thead>
+                    <th>JUEGO</th>
+                    <th>PLATAFORMA</th>
+                    <th>Nº DE VENTAS</th>
+        </thead>
+
+     
+        <br>
+
+        <tbody>
+               
+                    <tr *ngFor="let juegoVendido of comprasService.juegosIndividualesCompradosTODOS; let i=index">
+
+                        <td style="text-align: center; max-width: 7.5vw; overflow: hidden;">
+                            <img class="portada" src="../../../../assets/images/{{juegoVendido.imagen}}.jpg" alt="Portada">
+                            {{juegoVendido.nombre}}
+                        </td>
+                        <td style="width: 10vw; text-align: center;">
+                            <img class="icono"
+                                src="../../../../assets/images/{{juegoVendido.plataforma}}.png"
+                                alt="Icono Plataforma">
+                            {{juegoVendido.plataforma}}
+                        </td>
+                        <td style="width: 10vw; text-align: center;">
+                            {{comprasService.juegosCantidadCompradosTODOS[i]}}
+                        </td>
+                    </tr>
+        </tbody>
+    </table>
+</div>

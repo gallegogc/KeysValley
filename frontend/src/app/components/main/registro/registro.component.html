@@ -1,0 +1,153 @@
+<!-- 
+██████  ███████  ██████  ██ ███████ ████████ ██████   ██████       ██████  ██████  ███    ███ ██████  ██      ███████ ████████  █████  ██████   ██████  
+██   ██ ██      ██       ██ ██         ██    ██   ██ ██    ██     ██      ██    ██ ████  ████ ██   ██ ██      ██         ██    ██   ██ ██   ██ ██    ██ 
+██████  █████   ██   ███ ██ ███████    ██    ██████  ██    ██     ██      ██    ██ ██ ████ ██ ██████  ██      █████      ██    ███████ ██   ██ ██    ██ 
+██   ██ ██      ██    ██ ██      ██    ██    ██   ██ ██    ██     ██      ██    ██ ██  ██  ██ ██      ██      ██         ██    ██   ██ ██   ██ ██    ██ 
+██   ██ ███████  ██████  ██ ███████    ██    ██   ██  ██████       ██████  ██████  ██      ██ ██      ███████ ███████    ██    ██   ██ ██████   ██████  
+ -->
+<ng-container *ngIf="usuariosService.registroCompleto; else registro">
+    <div id="registroExitoBox" class="card">
+        <p id="tituloExito">REGISTRO COMPLETADO CON EXITO, INICIE SESIÓN</p>
+        <p>Puedes iniciar sesión en el apartado de login presente a su derecha.</p>
+    </div>
+</ng-container>
+
+
+
+<!-- 
+██████  ███████  ██████  ██ ███████ ████████ ██████   ██████  
+██   ██ ██      ██       ██ ██         ██    ██   ██ ██    ██ 
+██████  █████   ██   ███ ██ ███████    ██    ██████  ██    ██ 
+██   ██ ██      ██    ██ ██      ██    ██    ██   ██ ██    ██ 
+██   ██ ███████  ██████  ██ ███████    ██    ██   ██  ██████  
+ -->
+<ng-template #registro>
+    <div id="registroBox" class="card">
+        <!-- HE QUITADO EL ngSubmit Y HE PUESTO EL ngClick EN EL BOTON DE ALTA PORQUE SINO SALTABA LA VALIDACIÓN
+            DE CAMPOS AL PULSAR EL RESET YA QUE CONSIDERA AMBOS BOTONES COMO SUBMIT -->
+        <form #usuarioForm="ngForm">
+
+
+
+            <!-- 
+            ██    ██ ███████ ███████ ██████  
+            ██    ██ ██      ██      ██   ██ 
+            ██    ██ ███████ █████   ██████  
+            ██    ██      ██ ██      ██   ██ 
+             ██████  ███████ ███████ ██   ██ 
+             -->
+            <div class="card-content">
+                <p>
+                    Usuario:
+                </p>
+                <div class="apartadoForm">
+
+                    <!-- ESTE CAMPO OCULTO NOS PERMITE MANDAR EL ID SI LE DAMOS AL BOTÓN EDITAR
+                        DE TAL FORMA QUE EN EL MISMO FORMULARIO VAMOS A PODER DAR DE ALTA USUARIOS
+                    SI NO ENVIAMOS EL ID (SI NO LE DAMOS A EDITAR) Y EDITAR USUARIOS SI LE PASAMOS UN ID 
+                    (AL HACER CLIC EN EL ICONO EDITAR)  -->
+                    <input type="hidden" name="_id" #_id="ngModel"
+                        [(ngModel)]="usuariosService.usuarioSeleccionado._id">
+
+                    <input type="hidden" name="status" #status="ngModel"
+                        [(ngModel)]="usuariosService.usuarioSeleccionado.status">
+
+                    <input class="white-text" type="text" name="user" #user="ngModel"
+                        [(ngModel)]="usuariosService.usuarioSeleccionado.user"
+                        placeholder="Introduzca su nombre de usuario, con el que iniciará sesión">
+                    <!-- El ngModel APUNTA AL ATRIBUTO CORRESPONDIENTE DEL usuarioSeleccionado -->
+                </div>
+
+
+
+
+                <!-- 
+                ██████   █████  ███████ ███████ 
+                ██   ██ ██   ██ ██      ██      
+                ██████  ███████ ███████ ███████ 
+                ██      ██   ██      ██      ██ 
+                ██      ██   ██ ███████ ███████ 
+                     -->                        
+                <p>
+                    Contraseña:
+                </p>
+                <div class="apartadoForm">
+                    <input class="white-text" type="password" name="pass" #nombre="ngModel"
+                        [(ngModel)]="usuariosService.usuarioSeleccionado.pass"
+                        placeholder="Introduzca su contraseña">
+                </div>
+
+
+
+                <!-- 
+                ██████   █████  ███████ ███████ ██████  
+                ██   ██ ██   ██ ██      ██           ██ 
+                ██████  ███████ ███████ ███████  █████  
+                ██      ██   ██      ██      ██ ██      
+                ██      ██   ██ ███████ ███████ ███████ 
+                 -->
+                <!-- LA SEGUNDA CONTRASEÑA LA ALMACENAMOS EN LA VARIABLE pass2 POR ngModel -->
+                <p>
+                    Repita la contraseña:
+                </p>
+                <div class="apartadoForm">
+                    <input class="white-text" type="password" [(ngModel)]="usuariosService.pass2" name="pass2"
+                        placeholder="Repita la contraseña">
+                </div>
+
+                <!-- 
+                ███    ██  ██████  ███    ███ ██████  ██████  ███████ 
+                ████   ██ ██    ██ ████  ████ ██   ██ ██   ██ ██      
+                ██ ██  ██ ██    ██ ██ ████ ██ ██████  ██████  █████   
+                ██  ██ ██ ██    ██ ██  ██  ██ ██   ██ ██   ██ ██      
+                ██   ████  ██████  ██      ██ ██████  ██   ██ ███████ 
+                -->
+                <p>
+                    Nombre:
+                </p>
+                <div class="apartadoForm">
+                    <input class="white-text" type="text" name="nombre" #nombre="ngModel"
+                        [(ngModel)]="usuariosService.usuarioSeleccionado.nombre"
+                        placeholder="Introduzca su nombre">
+                </div>
+
+                <!-- 
+                 █████  ██████  ███████ ██      ██      ██ ██████   ██████  ███████ 
+                ██   ██ ██   ██ ██      ██      ██      ██ ██   ██ ██    ██ ██      
+                ███████ ██████  █████   ██      ██      ██ ██   ██ ██    ██ ███████ 
+                ██   ██ ██      ██      ██      ██      ██ ██   ██ ██    ██      ██ 
+                ██   ██ ██      ███████ ███████ ███████ ██ ██████   ██████  ███████ 
+                                    -->                                                
+                <p>
+                    Apellidos:
+                </p>
+                <div class="apartadoForm">
+                    <input class="white-text" type="text" name="apellidos" #nombre="ngModel"
+                        [(ngModel)]="usuariosService.usuarioSeleccionado.apellidos"
+                        placeholder="Introduzca sus apellidos">
+                </div>
+            </div>
+
+            <!-- 
+            ██████   ██████  ████████  ██████  ███    ██ ███████ ███████ 
+            ██   ██ ██    ██    ██    ██    ██ ████   ██ ██      ██      
+            ██████  ██    ██    ██    ██    ██ ██ ██  ██ █████   ███████ 
+            ██   ██ ██    ██    ██    ██    ██ ██  ██ ██ ██           ██ 
+            ██████   ██████     ██     ██████  ██   ████ ███████ ███████ 
+                   -->
+            <div class="card-action">
+                <div class="input-field col s12">
+                    <!-- ngClick REINICIAR FORMULARIO -->
+                    <button id="btnReset" class="btn btn-primary right"
+                        (click)="llamarReiniciarFormulario(usuarioForm)">BORRAR CAMPOS</button>
+                    <!-- ngClick ALTA DE USUARIO -->
+                    <button id="btnAlta" class="btn btn-primary right" (click)="llamarAltaUsuario(usuarioForm)">DARSE DE
+                        ALTA</button>
+                </div>
+            </div>
+
+
+        </form>
+
+    </div>
+</ng-template>

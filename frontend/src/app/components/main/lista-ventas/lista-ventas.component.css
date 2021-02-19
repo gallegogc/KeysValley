@@ -1,0 +1,28 @@
+  #listaVentasBox{
+    background-color: rgba(238, 238, 238, 0);
+    width: 42vw;
+    margin-top: 0.5vw;
+  }
+  
+  .icono{
+    width: 1.5vw;
+    height: 1.5vw;
+  }
+  
+  .portada{
+    width: 7vw;
+    height: 10vw;
+  }
+  
+  td, th {
+    color: rgb(255, 255, 255);
+    font-size: 0.9vw;
+    border-bottom: 0.3vw solid #23282e;
+  }
+  
+  th {
+    font-weight: bold;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+  }
+ 

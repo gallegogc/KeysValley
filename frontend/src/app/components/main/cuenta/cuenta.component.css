@@ -1,0 +1,64 @@
+
+/* VENTANA DE REGISTRO */
+#cuentaBox{
+    background-color: rgb(85, 102, 116);
+    color: white;
+    font-size: 0.8vw;
+    padding: 0.5vw;
+    width: 42.5vw;
+    height: fit-content;
+}
+
+.apartadoForm{
+    padding: 0vw;
+    margin: 0vw;
+  }
+  
+  p{
+    padding-top: 1vw;
+    color: white;
+    font-weight: bold;
+  }
+
+/* VENTANA QUE SE MUESTRA EN EL MAIN AL REGISTRATE CORRECTAMENTE */
+#registroExitoBox{
+    background-color: rgb(85, 102, 116);
+    color: white;
+    font-size: 0.8vw;
+    padding: 1vw;
+    width: 42.5vw;
+}
+
+form button{
+    font-weight: bold;
+  }
+
+#tituloExito {
+    font-weight: bold;
+    text-align: center;
+}
+
+#btnGuardar{
+    background-color: rgb(104, 145, 84);
+    margin-right: 1vw;
+}
+#btnCancelar{
+    background-color: rgb(145, 84, 84);
+    margin-right: 1vw;
+}
+
+#btnBaja{
+    background-color: rgb(157, 138, 78);
+    margin-right: 1vw;
+}
+
+button{
+    margin-top: 0vw;
+    padding-top: 0vw;
+    height: 2.5vw;
+}
+
+.negrita{
+    font-weight: bold;
+}
+

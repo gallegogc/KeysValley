@@ -1,0 +1,172 @@
+<div id="main-box" class="scrollbar scrollbar-primary">
+    <div class="centrarBox">
+
+        <!-- 
+███████ ██     ██ ██ ████████  ██████ ██   ██     ██    ██ ███████ ███    ██ ████████  █████  ███    ██  █████  
+██      ██     ██ ██    ██    ██      ██   ██     ██    ██ ██      ████   ██    ██    ██   ██ ████   ██ ██   ██ 
+███████ ██  █  ██ ██    ██    ██      ███████     ██    ██ █████   ██ ██  ██    ██    ███████ ██ ██  ██ ███████ 
+     ██ ██ ███ ██ ██    ██    ██      ██   ██      ██  ██  ██      ██  ██ ██    ██    ██   ██ ██  ██ ██ ██   ██ 
+███████  ███ ███  ██    ██     ██████ ██   ██       ████   ███████ ██   ████    ██    ██   ██ ██   ████ ██   ██                                                                                                          
+ -->
+
+        <ng-container [ngSwitch]="ventana">
+
+            <ng-container *ngSwitchCase="'bienvenida'">
+                <div class="brand">{{titulo}}</div>
+                <app-bienvenida></app-bienvenida>
+            </ng-container>
+
+
+            <!-- 
+                ██    ██ ███    ██          ██ ██    ██ ███████  ██████   ██████  
+                ██    ██ ████   ██          ██ ██    ██ ██      ██       ██    ██ 
+                ██    ██ ██ ██  ██          ██ ██    ██ █████   ██   ███ ██    ██ 
+                ██    ██ ██  ██ ██     ██   ██ ██    ██ ██      ██    ██ ██    ██ 
+                 ██████  ██   ████      █████   ██████  ███████  ██████   ██████  
+            -->
+
+            <!-- SI VENTANA == "JUEGOS" -->
+            <ng-container *ngSwitchCase="'juegos'">
+                <ng-container *ngIf="numJuegos == 'uno'; else varios">
+                    <!-- SI SE MUESTRA UN JUEGO -->
+                    <app-ficha [juego]="juegoIndividual"></app-ficha> <!-- MOSTRAMOS JUEGO INDIVIDUAL -->
+                </ng-container>
+            </ng-container>
+
+
+            <!-- 
+             ██████  ████████ ██████   █████  ███████     ██    ██ ███████ ███    ██ ████████  █████  ███    ██  █████  ███████ 
+            ██    ██    ██    ██   ██ ██   ██ ██          ██    ██ ██      ████   ██    ██    ██   ██ ████   ██ ██   ██ ██      
+            ██    ██    ██    ██████  ███████ ███████     ██    ██ █████   ██ ██  ██    ██    ███████ ██ ██  ██ ███████ ███████ 
+            ██    ██    ██    ██   ██ ██   ██      ██      ██  ██  ██      ██  ██ ██    ██    ██   ██ ██  ██ ██ ██   ██      ██ 
+             ██████     ██    ██   ██ ██   ██ ███████       ████   ███████ ██   ████    ██    ██   ██ ██   ████ ██   ██ ███████ 
+              -->                                                                                       
+
+
+            <!-- SI VENTANA == "ADD JUEGO" -->
+            <ng-container *ngSwitchCase="'addjuego'">
+                <div class="brand">{{titulo}}</div>
+                <app-add-juego></app-add-juego>
+            </ng-container>
+
+            <!-- SI VENTANA == "LISTA JUEGOS" -->
+            <ng-container *ngSwitchCase="'lista juegos'">
+                <div class="brand">{{titulo}}</div>
+                <app-lista-juegos></app-lista-juegos>
+            </ng-container>
+
+            <!-- SI VENTANA == "LISTA USUARIOS" -->
+            <ng-container *ngSwitchCase="'lista usuarios'">
+                <div class="brand">{{titulo}}</div>
+                <app-lista-usuarios></app-lista-usuarios>
+            </ng-container>
+
+            <!-- SI VENTANA == "LISTA VENTAS" -->
+            <ng-container *ngSwitchCase="'lista ventas'">
+                <div class="brand">{{titulo}}</div>
+                <app-lista-ventas></app-lista-ventas>
+            </ng-container>
+
+            <!-- SI VENTANA == "REGISTRO" -->
+            <ng-container *ngSwitchCase="'registro'">
+                <div class="brand">{{titulo}}</div>
+                <app-registro></app-registro>
+            </ng-container>
+
+            <!-- SI VENTANA == "CARRITO" -->
+            <ng-container *ngSwitchCase="'carrito'">
+                <div class="brand">{{titulo}}</div>
+                <app-carrito [formato]="formatoCarrito" [idUsuario]="idUsuario"></app-carrito>
+            </ng-container>
+
+            <!-- SI VENTANA == "COMPRAS" -->
+            <ng-container *ngSwitchCase="'compras'">
+                <div class="brand">{{titulo}}</div>
+                <app-lista-compras [idUsuario]="idUsuario"></app-lista-compras>
+            </ng-container>
+
+            <!-- SI VENTANA == "CUENTA" -->
+            <ng-container *ngSwitchCase="'cuenta'">
+                <div class="brand">{{titulo}}</div>
+                <app-cuenta [idUsuario]="idUsuario"></app-cuenta>
+            </ng-container>
+
+            <ng-container *ngSwitchDefault>
+
+            </ng-container>
+        </ng-container>
+
+
+
+        <!-- 
+    ██    ██  █████  ██████  ██  ██████  ███████          ██ ██    ██ ███████  ██████   ██████  ███████ 
+    ██    ██ ██   ██ ██   ██ ██ ██    ██ ██               ██ ██    ██ ██      ██       ██    ██ ██      
+    ██    ██ ███████ ██████  ██ ██    ██ ███████          ██ ██    ██ █████   ██   ███ ██    ██ ███████ 
+     ██  ██  ██   ██ ██   ██ ██ ██    ██      ██     ██   ██ ██    ██ ██      ██    ██ ██    ██      ██ 
+      ████   ██   ██ ██   ██ ██  ██████  ███████      █████   ██████  ███████  ██████   ██████  ███████ 
+        -->
+        <ng-template #varios>
+
+            <!-- 
+                ██████  ███████  ██████  ██    ██ ███████ ███    ██  ██████  ███████ 
+                ██   ██ ██      ██    ██ ██    ██ ██      ████   ██ ██    ██ ██      
+                ██████  █████   ██    ██ ██    ██ █████   ██ ██  ██ ██    ██ ███████ 
+                ██      ██      ██ ▄▄ ██ ██    ██ ██      ██  ██ ██ ██    ██      ██ 
+                ██      ███████  ██████   ██████  ███████ ██   ████  ██████  ███████ 
+                                    ▀▀                                               
+            -->
+
+            <ng-container *ngIf="formatoJuegos == 'formatoPequeno'; else formatoGrande">
+
+                <div class="brand">{{titulo}}</div>
+                <div class="subbrand">{{resultados}}</div>
+                <div *ngFor="let juego of objetoJuegosService.juegos">
+
+                    <!-- NG CONTAINER PARA INDICARLE EL NG CLICK PARA IR A LA FICHA -->
+                    <div>
+                        <!-- SEGÚN EL STOCK LLAMO AL COMPONENTE QUE MUESTRA EL JUEGO SIN STOCK O PROSIGO -->
+                        <ng-container *ngIf="juego.stock > 0; else sinStock">
+
+                            <!-- SEGÚN LA LONGITUD DE NOMBRE LLAMO AL COMPONENTE QUE PERMITE QUE SE MUEVA EL TEXTO O AL QUE NO -->
+                            <ng-container *ngIf="juego.nombre.length > 15; else elseTemplate">
+                                <app-juego-mov [juego]="juego"></app-juego-mov>
+                            </ng-container>
+
+                            <ng-template #elseTemplate>
+                                <app-juego [juego]="juego"></app-juego>
+                            </ng-template>
+
+                        </ng-container>
+
+                        <ng-template #sinStock>
+                            <ng-container *ngIf="juego.nombre.length > 15; else sinStockNoMov">
+                                <app-juego-sin-stock-mov [juego]="juego"></app-juego-sin-stock-mov>
+                            </ng-container>
+
+                            <ng-template #sinStockNoMov>
+                                <app-juego-sin-stock [juego]="juego"></app-juego-sin-stock>
+                            </ng-template>
+                        </ng-template>
+                    </div>
+
+                </div>
+            </ng-container>
+        </ng-template>
+    </div>
+</div>
+
+<!-- 
+     ██████  ██████   █████  ███    ██ ██████  ███████ ███████ 
+    ██       ██   ██ ██   ██ ████   ██ ██   ██ ██      ██      
+    ██   ███ ██████  ███████ ██ ██  ██ ██   ██ █████   ███████ 
+    ██    ██ ██   ██ ██   ██ ██  ██ ██ ██   ██ ██           ██ 
+     ██████  ██   ██ ██   ██ ██   ████ ██████  ███████ ███████ 
+ -->
+
+<ng-template #formatoGrande>
+    <div class="brand">{{titulo}}</div>
+    <div class="subbrand">{{resultados}}</div>
+    <div *ngFor="let juego of objetoJuegosService.juegos">
+        <app-ficha [juego]="juego"></app-ficha>
+    </div>
+</ng-template>

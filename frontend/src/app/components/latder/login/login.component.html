@@ -1,0 +1,67 @@
+<div>
+    <div class="brand">{{loginTitulo}}</div>
+
+    <!-- 
+        ██       ██████   ██████  ██    ██ ███████  █████  ██████   ██████  
+        ██      ██    ██ ██       ██    ██ ██      ██   ██ ██   ██ ██    ██ 
+        ██      ██    ██ ██   ███ ██    ██ █████   ███████ ██   ██ ██    ██ 
+        ██      ██    ██ ██    ██ ██    ██ ██      ██   ██ ██   ██ ██    ██ 
+        ███████  ██████   ██████   ██████  ███████ ██   ██ ██████   ██████  
+        -->
+    <ng-container *ngIf="loged; else sinLoguear">
+        <div class="nav-side-menu">
+            <div class="menu-list">
+                <ul id="menu-content" class="menu-content collapse out">
+                    
+                    <!-- BOTÓN CERRAR SESIÓN -->
+                    <li (click)="cerrarSesion()">
+                        <a href="#">
+                            <i class="fa fa-sign-out fa-lg"></i> Cerrar sesión
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </ng-container>
+
+</div>
+
+<!-- 
+███████ ██ ███    ██     ██       ██████   ██████  ██    ██ ███████  █████  ██████  
+██      ██ ████   ██     ██      ██    ██ ██       ██    ██ ██      ██   ██ ██   ██ 
+███████ ██ ██ ██  ██     ██      ██    ██ ██   ███ ██    ██ █████   ███████ ██████  
+     ██ ██ ██  ██ ██     ██      ██    ██ ██    ██ ██    ██ ██      ██   ██ ██   ██ 
+███████ ██ ██   ████     ███████  ██████   ██████   ██████  ███████ ██   ██ ██   ██ 
+ -->
+<ng-template #sinLoguear>
+    <div id="loginBox">
+        <form id="loginForm" action="" method="post">
+
+            <!-- TEXTBOX USUARIO -->
+            <div class="elementoBox">
+                <p>Usuario:</p>
+                <!-- EL NOMBRE DE USUARIO INTRODUCIDO ESTÁ EN NGMODEL CON EL ATRIBUTO USER DEL USUARIO SELECCIONADO DEL SERVICIO USUARIO -->
+                <input class="inputText" type="text" name="username" #nombre="ngModel"
+                    [(ngModel)]="objetoUsuariosService.usuarioSeleccionado.user">
+            </div>
+
+            <!-- TEXTBOX CONTRASEÑA -->
+            <div class="elementoBox">
+                <p>Contraseña:</p>
+                <!-- LA CONTRASEÑA INTRODUCIDA ESTÁ EN NGMODEL CON EL ATRIBUTO PASS DEL USUARIO SELECCIONADO DEL SERVICIO USUARIO -->
+                <input class="inputText" type="password" name="password" #nombre="ngModel"
+                    [(ngModel)]="objetoUsuariosService.usuarioSeleccionado.pass">
+            </div>
+
+            <!-- BOTÓN REGISTRO -->
+            <div class="elementoBox">
+                <a href="#" id="btnRegistro" (click)="registro()">Registrate aquí</a>
+            </div>
+
+            <!-- BOTÓN INICIAR SESIÓN -->
+            <input type="submit" name="submit" class="btn btn-info btn-md" value="Iniciar sesión"
+                (click)="iniciarSesion(loginForm)" style="font-weight: bold; padding: 0vw; border-radius:0.2vw;">
+        </form>
+    </div>
+</ng-template>

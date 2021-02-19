@@ -1,0 +1,186 @@
+<!-- 
+  ██████  █████  ██████  ██████  ██ ████████  ██████      ███████ ██ ███    ███ ██████  ██      ███████ 
+ ██      ██   ██ ██   ██ ██   ██ ██    ██    ██    ██     ██      ██ ████  ████ ██   ██ ██      ██      
+ ██      ███████ ██████  ██████  ██    ██    ██    ██     ███████ ██ ██ ████ ██ ██████  ██      █████   
+ ██      ██   ██ ██   ██ ██   ██ ██    ██    ██    ██          ██ ██ ██  ██  ██ ██      ██      ██      
+  ██████ ██   ██ ██   ██ ██   ██ ██    ██     ██████      ███████ ██ ██      ██ ██      ███████ ███████ 
+ -->
+
+<!-- SEGÚN EL VALOR DE LA VARIABLE FORMATO SE VA A MOSTRAR EL CARRITO SIMPLE O EL CARRITO DESGLOSE CON LA TABLA DE LOS JUEGOS EN EL CARRITO --> 
+<ng-container *ngIf="formato=='carritoSimple'; else carritoDesglose">
+
+    <!-- MENU -->
+    <div class="nav-side-menu">
+        <!-- TITULO CARRITO -->
+        <div class="brand">Carrito</div>
+        <div id="carritoBox">
+            <div class="menu-list">
+                <!-- LISTA DE ELEMENTOS DENTRO DEL MENU -->
+                <ul id="menu-content" class="menu-content">
+
+                    <!-- SI EL NÚMERO DE JUEGOS EN EL CARRITO DEL USUARIO ES SUPERIOR A 0 MOSTRAMOS EL BOTÓN VACIAR CARRITO  -->
+                    <ng-container *ngIf="carritoService.juegosIndividualesCarritoUSUARIO.length > 0; else carritoVacio">
+                        <!-- ngClick A LLAMAR VACIAR CARRITO PARA QUE POR COMUNC. SERVICE SE AUTO LLAME Y VACIE EL CARRITO DE 
+                        LAS DOS INSTANCIACIONES DEL MISMO, TANTO EL SIMPLE COMO EL DESGLOSADO -->
+                        <li (click)="llamarVaciarCarrito()" style="padding-left: 0.5vw;">
+                            <a href="#">
+                                <i class="fa fa-shopping-cart fa-lg"></i> Vaciar carrito
+                            </a>
+                        </li>
+                    </ng-container>
+
+                    <!-- SI NO TENEMOS JUEGOS EN EL CARRITO MOSTRAMOS EL MENSAJE CARRITO VACÍO -->
+                    <ng-template #carritoVacio>
+                        <li style="padding-left: 0.5vw;">
+                            <a href="#" id="carritoVacioTexto">
+                                <i class="fa fa-hand-o-right fa-lg"></i> El carrito está vacío
+                            </a>
+                        </li>
+                    </ng-template>
+
+                    <!-- POR CADA JUEGO EN EL CARRITO DEL USUARIO MOSTRAMOS UN ELEMENTO LI CON EL JUEGO, LA PLATAFORMA Y LA CANTIDAD -->
+                    <ng-container *ngFor="let juego of carritoService.juegosIndividualesCarritoUSUARIO; let i=index">
+                        <li>
+
+                            <div style="overflow-x: auto; white-space: nowrap; text-align: center;">
+                                <span>
+                                    {{juego.nombre}} <br>
+                                    {{juego.plataforma}}
+                                </span>
+                            </div>
+
+                            <!-- ADEMÁS SE INSERTAN 3 BOTONES EN CADA JUEGO, QUE PERMITEN:
+                            - ELIMINAR TODOS TODAS LAS UNIDADES
+                            - AÑADIR UNA UNIDAD
+                            - RESTAR UNA UNIDAD  -->
+
+                            <div style="text-align: center;">
+                                <!-- PAPELERA: ELIMINA TODAS LAS UNIDADES DEL JUEGO SELECCIONADO DEL CARRITO -->
+                                <a href="#" (click)="llamarEliminarJuegoCarrito(i)" style="color: white">
+                                    <i class="fa fa-trash fa-lg"></i>
+                                </a>
+                                <!-- MÁS: AÑADE UNA UNIDAD DEL JUEGO SELECCIONADO AL CARRITO -->
+                                <!-- EN ESTE CASO NO ME VALE PASAR EL INDEX PORQUE TAMBIÉN UTILIZO EL MÉTODO COMPRANDO
+                                DESDE LAS FICHAS, POR LO QUE TENGO QUE PASAR EL JUEGO -->
+                                <a href="#" (click)="llamarAddJuegoCarrito(juego)" style="color: white">
+                                    <i class="fa fa-plus fa-lg"></i>
+                                </a>
+                                <!-- UNIDADES DEL JUEGO EN EL CARRITO LOCAL -->
+                                <span>Unidades: {{carritoService.juegosCantidadCarritoUSUARIO[i]}}</span>
+                                <!-- MENOS: QUITA UNA UNIDAD DEL JUEGO SELECCIONADO DEL CARRITO -->
+                                <a href="#" (click)="llamarEliminarUnidadCarrito(i)" style="color: white">
+                                    <i class="fa fa-minus fa-lg"></i>
+                                </a>
+                            </div>
+
+                        </li>
+                    </ng-container>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</ng-container>
+
+
+
+
+
+
+
+
+<!-- 
+ ██████  █████  ██████  ██████  ██ ████████  ██████      ██████  ███████ ███████  ██████  ██       ██████  ███████ ███████ 
+██      ██   ██ ██   ██ ██   ██ ██    ██    ██    ██     ██   ██ ██      ██      ██       ██      ██    ██ ██      ██      
+██      ███████ ██████  ██████  ██    ██    ██    ██     ██   ██ █████   ███████ ██   ███ ██      ██    ██ ███████ █████   
+██      ██   ██ ██   ██ ██   ██ ██    ██    ██    ██     ██   ██ ██           ██ ██    ██ ██      ██    ██      ██ ██      
+ ██████ ██   ██ ██   ██ ██   ██ ██    ██     ██████      ██████  ███████ ███████  ██████  ███████  ██████  ███████ ███████ 
+ -->
+ <!-- ESTE ES EL TEMPLATE DEL CARRITO DESGLOSE, CUANDO LA VARIABLE FORMATO NO ES CARRITO SIMPLE -->
+<ng-template #carritoDesglose>
+
+    <!-- 
+     ██████  ██████  ███    ███ ██████  ██████   █████      ██████  ███████  █████  ██      ██ ███████  █████  ██████   █████  
+    ██      ██    ██ ████  ████ ██   ██ ██   ██ ██   ██     ██   ██ ██      ██   ██ ██      ██    ███  ██   ██ ██   ██ ██   ██ 
+    ██      ██    ██ ██ ████ ██ ██████  ██████  ███████     ██████  █████   ███████ ██      ██   ███   ███████ ██   ██ ███████ 
+    ██      ██    ██ ██  ██  ██ ██      ██   ██ ██   ██     ██   ██ ██      ██   ██ ██      ██  ███    ██   ██ ██   ██ ██   ██ 
+     ██████  ██████  ██      ██ ██      ██   ██ ██   ██     ██   ██ ███████ ██   ██ ███████ ██ ███████ ██   ██ ██████  ██   ██ 
+     -->
+     <!-- SI LA VARIABLE COMPRA COMPLETA ES TRUE, MOSTRAMOS UN MENSAJE EN LUGAR DE LA TABLA DEL CARRITO -->
+    <ng-container *ngIf="carritoService.compraCompleta; else carritoTable">
+        <div id="mensajeBox" class="card" style="height: 5.5vw !important;">
+            <p id="titulo">COMPRA COMPLETADA CON EXITO</p>
+            <p>El proceso de compra se ha completado correctamente, haga clic en COMPRAS en el lateral derecho para
+                consultar las claves de sus juegos adquiridos.</p>
+        </div>
+    </ng-container>
+
+
+    <!-- 
+    ████████  █████  ██████  ██       █████       ██████  █████  ██████  ██████  ██ ████████  ██████  
+       ██    ██   ██ ██   ██ ██      ██   ██     ██      ██   ██ ██   ██ ██   ██ ██    ██    ██    ██ 
+       ██    ███████ ██████  ██      ███████     ██      ███████ ██████  ██████  ██    ██    ██    ██ 
+       ██    ██   ██ ██   ██ ██      ██   ██     ██      ██   ██ ██   ██ ██   ██ ██    ██    ██    ██ 
+       ██    ██   ██ ██████  ███████ ██   ██      ██████ ██   ██ ██   ██ ██   ██ ██    ██     ██████  
+    -->
+    <!-- CUANDO LA COMPRA NO SE HA REALIZADO, MOSTRAMOS LA TABLA CARRITO -->
+    <ng-template #carritoTable>
+
+        <ng-container *ngIf="carritoService.juegosIndividualesCarritoUSUARIO.length > 0; else carritoDesgloseVacio">
+
+            <div id="listaJuegosBox" class="card">
+                <table>
+                    <!-- ENCABEZADOS -->
+                    <thead>
+                        <th>CANTIDAD</th>
+                        <th>PRECIO UNIDAD</th>
+                        <th>STOCK</th>
+                        <th>NOMBRE</th>
+                        <th>PLATAFORMA</th>
+                    </thead>
+
+                    <!-- ELEMENTOS DE LA TABLA, HACIENDO REFERENCIA DESDE LOS ARRAYS (DE UNIDADES Y CANTIDADES) DEL CARRITO SERVICE -->
+                    <tbody>
+                        <tr *ngFor="let juego of carritoService.juegosIndividualesCarritoUSUARIO; let i=index">
+
+                            <td style="width: 5vw; text-align: center;">
+                                {{carritoService.juegosCantidadCarritoUSUARIO[i]}}</td>
+                            <td style="width: 4vw; text-align: center;">{{juego.precio}} €</td>
+                            <td style="width: 4vw; text-align: center;">{{juego.stock}} unidades</td>
+
+                            <td style="width: 9vw; overflow: hidden; text-align: left;">
+                                <img class="portada" src="../../../../assets/images/{{juego.imagen}}.jpg" alt="Portada">
+                                {{juego.nombre}}
+                            </td>
+                            <td style="width: 5vw; overflow: hidden; text-align: left;">
+                                <img class="icono" src="../../../../assets/images/{{juego.plataforma}}.png"
+                                    alt="Icono Plataforma">
+                                {{juego.plataforma}}
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+
+                <h5
+                    style="display: inline-block; color: white; padding: 2vw; font-family: Verdana, Geneva, Tahoma, sans-serif;">
+                    PRECIO TOTAL DEL PEDIDO: {{carritoService.precioTotal}}€</h5>
+                <button class="btn btn-primary" (click)="llamarConfirmarCompra()"
+                    style="height: 4vw; width: 10vw; font-size: 1vw; font-weight: bold; margin-left: 2vw;">
+                    CONFIRMAR <br>
+                    COMPRA
+                </button>
+
+            </div>
+        </ng-container>
+
+        <ng-template #carritoDesgloseVacio>
+            <div id="mensajeBox" class="card" style="height: 5vw !important;">
+                <p id="titulo">CARRITO VACÍO</p>
+                <p>El carrito está vacío, añada videojuegos al carrito haciendo clic en comprar.</p>
+            </div>
+        </ng-template>
+
+    </ng-template>
+
+</ng-template>

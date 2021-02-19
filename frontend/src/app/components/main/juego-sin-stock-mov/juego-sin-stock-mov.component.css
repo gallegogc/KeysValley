@@ -1,0 +1,46 @@
+#juegoBox{
+  height: 327px;
+  width: 150px;
+    margin: 0.6vw;
+    margin-bottom: 0.3vw;
+    float: left;
+    background-color: rgb(138, 138, 138);
+}
+  
+  .icono{
+    position: absolute;
+    top:-0.25vw;
+    left: -0.25vw;
+    width:29px;
+    height: 29px;
+    z-index: 1;
+    }
+  
+    img:not(.icono){
+      height: 210px;
+      width: 150px;
+      filter: saturate(0%); 
+      z-index: 0;
+    }
+    
+    .imageDiv{
+      height: 210px;
+      width: 150px;
+    }
+    
+    .boton{
+    position: relative;
+    top:3px;
+    left: -4px;
+    width: 158px;
+    }
+  
+  .tituloJuego{
+  font-size: 15px;
+  font-weight: bold;
+  white-space: nowrap;
+  display: block;
+  text-overflow: ellipsis;
+  
+  }
+  

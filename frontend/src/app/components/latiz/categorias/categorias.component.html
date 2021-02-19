@@ -1,0 +1,167 @@
+<div class="categoriaBox">
+
+  <div class="nav-side-menu">
+    <div class="brand">CATEGORÍAS</div>
+    <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
+
+    <div class="menu-list">
+
+
+      <!-- 
+      ████████  ██████  ██████   ██████  ███████ 
+         ██    ██    ██ ██   ██ ██    ██ ██      
+         ██    ██    ██ ██   ██ ██    ██ ███████ 
+         ██    ██    ██ ██   ██ ██    ██      ██ 
+         ██     ██████  ██████   ██████  ███████ 
+       -->
+      <ul id="menu-content" class="menu-content collapse out">
+        <li (click)="todos()">
+          <!--<li (click)="buscarNumStock()">-->
+          <a href="#">
+            <i class="fa fa-th fa-lg"></i> Todos
+          </a>
+        </li>
+
+       <!--  <li (click)="buscarNumStock()">
+          <a href="#">
+            <i class="fa fa-th fa-lg"></i> Por Stock
+          </a>
+        </li>
+
+        <li (click)="buscarEmpPor()">
+          <a href="#">
+            <i class="fa fa-th fa-lg"></i> Empiezan por
+          </a>
+        </li> -->
+
+        <!-- 
+        ██████  ██    ██ ███████  ██████  ██    ██ ███████ ██████   █████  
+        ██   ██ ██    ██ ██      ██    ██ ██    ██ ██      ██   ██ ██   ██ 
+        ██████  ██    ██ ███████ ██    ██ ██    ██ █████   ██   ██ ███████ 
+        ██   ██ ██    ██      ██ ██ ▄▄ ██ ██    ██ ██      ██   ██ ██   ██ 
+        ██████   ██████  ███████  ██████   ██████  ███████ ██████  ██   ██ 
+                                     ▀▀                                    
+        -->
+        <!-- ELEMENTOS LISTA CON ngKeyUp, LLAMA AL MÉTODO busquedaJuego() PASÁNDOLE EL .value DE busqueda, CADA VEZ QUE SE LEVANTA UNA TECLA -->
+        <li>
+          <a href="#">
+            <i class="fa fa-search fa-lg"></i> <input type="search" placeholder="Buscar juego" #busqueda
+              (keyup)="busquedaJuego(busqueda.value)" style="width: 7vw;">
+          </a>
+        </li>
+
+
+
+
+        <!-- 
+         ██████  ███████ ███    ██ ███████ ██████   ██████  ███████ 
+        ██       ██      ████   ██ ██      ██   ██ ██    ██ ██      
+        ██   ███ █████   ██ ██  ██ █████   ██████  ██    ██ ███████ 
+        ██    ██ ██      ██  ██ ██ ██      ██   ██ ██    ██      ██ 
+         ██████  ███████ ██   ████ ███████ ██   ██  ██████  ███████
+        -->
+
+        <!-- CADA <li> DE LOS ELEMENTOS DEL MENÚ PRINCIPAL TIENE: 
+          - data-toggle collapse
+          - data-target CON UN ID DE UN SUBMENU <ul> 
+          AL HACER CLIC SOBRE EL LI SE MUESTRA EL SUBMENU <ul> EXPANDIDO  
+          -->
+        <li data-toggle="collapse" data-target="#genero" class="collapsed">
+          <a href="#"><i class="fa fa-book fa-lg"></i> Género <span class="arrow"></span></a>
+        </li>
+        <!-- LISTA CON GÉNEROS -->
+        <ul class="sub-menu collapse" id="genero">
+          <!-- ngClick LLAMANDO A genero () PASÁNDOLE EL GÉNERO -->
+          <li (click)="genero('Acción')"><a href="#">Acción</a></li>
+          <li (click)="genero('Aventura')"><a href="#">Aventura</a></li>
+          <li (click)="genero('Cartas')"><a href="#">Cartas</a></li>
+          <li (click)="genero('Conducción')"><a href="#">Conducción</a></li>
+          <li (click)="genero('Deportes')"><a href="#">Deportes</a></li>
+          <li (click)="genero('Gestión')"><a href="#">Gestión de recursos</a></li>
+          <li (click)="genero('Life-like')"><a href="#">Life-like</a></li>
+          <li (click)="genero('Lucha')"><a href="#">Lucha</a></li>
+          <li (click)="genero('Metroidvania')"><a href="#">Metroidvania</a></li>
+          <li (click)="genero('Shooter')"><a href="#">Shooter</a></li>
+          <li (click)="genero('Rogue-lite')"><a href="#">Rogue-lite</a></li>
+          <li (click)="genero('Rol')"><a href="#">Rol</a></li>
+        </ul>
+
+
+
+        <!-- 
+          ██████  ██       █████  ████████  █████  ███████  ██████  ██████  ███    ███  █████  ███████ 
+          ██   ██ ██      ██   ██    ██    ██   ██ ██      ██    ██ ██   ██ ████  ████ ██   ██ ██      
+          ██████  ██      ███████    ██    ███████ █████   ██    ██ ██████  ██ ████ ██ ███████ ███████ 
+          ██      ██      ██   ██    ██    ██   ██ ██      ██    ██ ██   ██ ██  ██  ██ ██   ██      ██ 
+          ██      ███████ ██   ██    ██    ██   ██ ██       ██████  ██   ██ ██      ██ ██   ██ ███████ 
+        -->
+        <li data-toggle="collapse" data-target="#plataforma" class="collapsed">
+          <a href="#"><i class="fa fa-gamepad fa-lg"></i> Plataforma <span class="arrow"></span></a>
+        </li>
+        <!-- LISTA CON PLATAFORMAS -->
+        <ul class="sub-menu collapse" id="plataforma">
+          <!-- ngClick LLAMANDO A plataforma () PASÁNDOLE LA PLATAFORMA -->
+          <li (click)="plataforma('Steam')">Steam</li>
+          <li (click)="plataforma('Playstation 5')">PlayStation 5</li>
+          <li (click)="plataforma('Playstation 4')">PlayStation 4</li>
+          <li (click)="plataforma('Xbox Series')">Xbox Series X/S</li>
+          <li (click)="plataforma('Xbox One')">Xbox One</li>
+          <li (click)="plataforma('Nintendo Switch')">Nintendo Switch</li>
+        </ul>
+
+
+
+        <!-- 
+        ██       █████  ███    ██ ███████  █████  ███    ███ ██ ███████ ███    ██ ████████  ██████  
+        ██      ██   ██ ████   ██    ███  ██   ██ ████  ████ ██ ██      ████   ██    ██    ██    ██ 
+        ██      ███████ ██ ██  ██   ███   ███████ ██ ████ ██ ██ █████   ██ ██  ██    ██    ██    ██ 
+        ██      ██   ██ ██  ██ ██  ███    ██   ██ ██  ██  ██ ██ ██      ██  ██ ██    ██    ██    ██ 
+        ███████ ██   ██ ██   ████ ███████ ██   ██ ██      ██ ██ ███████ ██   ████    ██     ██████  
+        -->
+        <li data-toggle="collapse" data-target="#año" class="collapsed">
+          <a href="#"><i class="fa fa-calendar fa-lg"></i> Año lanzamiento <span class="arrow"></span></a>
+        </li>
+        <!-- LISTA CON AÑOS -->
+        <ul class="sub-menu collapse" id="año">
+          <!-- ngClick LLAMANDO A lanzamiento() PASÁNDOLE EL AÑO DE INICIO, EL AÑO FINAL SE CALCULA EN EL BACK SUMANDO 9 -->
+          <li (click)="lanzamiento(1990)">1990 - 1999</li>
+          <li (click)="lanzamiento(2000)">2000 - 2009</li>
+          <li (click)="lanzamiento(2010)">2010 - 2019</li>
+          <li (click)="lanzamiento(2020)">2020 - Actualidad</li>
+        </ul>
+
+
+        <!-- 
+        ███████ ██ ███    ██     ███████ ████████  ██████   ██████ ██   ██ 
+        ██      ██ ████   ██     ██         ██    ██    ██ ██      ██  ██  
+        ███████ ██ ██ ██  ██     ███████    ██    ██    ██ ██      █████   
+             ██ ██ ██  ██ ██          ██    ██    ██    ██ ██      ██  ██  
+        ███████ ██ ██   ████     ███████    ██     ██████   ██████ ██   ██ 
+        -->
+        <!-- ELEMENTO DE LISTA CON ngClick QUE ACTIVA MÉTODO sinStock -->
+        <li (click)="sinStock()">
+          <a>
+            <i class="fa fa-archive fa-lg"></i> Fuera de stock
+          </a>
+        </li>
+
+
+
+        <!-- 
+           ██████  █████  ███    ███ ██████  ██  █████  ██████      ██    ██ ██ ███████ ████████  █████  
+          ██      ██   ██ ████  ████ ██   ██ ██ ██   ██ ██   ██     ██    ██ ██ ██         ██    ██   ██ 
+          ██      ███████ ██ ████ ██ ██████  ██ ███████ ██████      ██    ██ ██ ███████    ██    ███████ 
+          ██      ██   ██ ██  ██  ██ ██   ██ ██ ██   ██ ██   ██      ██  ██  ██      ██    ██    ██   ██ 
+           ██████ ██   ██ ██      ██ ██████  ██ ██   ██ ██   ██       ████   ██ ███████    ██    ██   ██
+      -->
+        <!-- ELEMENTO DE LISTA CON ngClick QUE ACTIVA MÉTODO cambiarVista() -->
+        <li (click)="cambiarVista()">
+          <a>
+            <i class="fa fa-th fa-lg"></i> Cambiar Vista
+          </a>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+</div>

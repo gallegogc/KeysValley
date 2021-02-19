@@ -1,0 +1,74 @@
+<div id="listaComprasBox">
+
+
+    <div *ngFor="let compra of comprasService.compras; let i=index">
+        <div class="nav-side-menu">
+            <div class="menu-list">
+                <ul id="menu-content" class="menu-content collapse out">
+                    <li data-toggle="collapse" [attr.data-target]="'#compra' + i" class="collapsed"
+                        style="line-height: 2.5vw;">
+                        <a href="#"><i class="fa fa-shopping-cart fa-lg"></i> <b>   ID DE COMPRA:</b> {{compra._id}}
+                            <b>FECHA:</b>
+                            {{compra.fecha}}<span class="arrow"></span></a>
+                    </li>
+                    <ul class="sub-menu collapse" id="compra{{i}}">
+                        <li>
+
+                            <td style="width: 5vw; text-align: center;" id="ventanaJuegos">
+
+                                <!-- RECORREMOS EL ARRAY DE TUPLA DE JUEGOS  -->
+                                <ng-container *ngFor="let tupla of arrayTuplasJuegosCompra">
+                                    <!-- SI EL VALOR DE COMPRA (primer elemento de la tupla, 0) ES EL MISMO QUE 
+                                            EL INDICE DE LA COMPRA EN LA QUE ESTAMOS CREAMOS UNA TABLA CON ESOS VALORES -->
+                                    <table *ngIf="tupla[0]==i" class="tablaDesplegada">
+
+                                        <!-- AQUÍ YA TENEMOS PARA USAR:
+                                                - EL JUEGO: tupla[1]
+                                                - LAS CLAVEE DEL MISMO: tupla[2]
+                                            -->
+
+                                        <thead>
+                                            <th>NOMBRE</th>
+                                            <th>PLATAFORMA</th>
+                                            <th>CLAVE</th>
+                                        </thead>
+
+                                        <tbody>
+                                            <td style="text-align: center; max-width: 4.5vw; overflow: hidden;">
+                                                <img class="portada"
+                                                    src="../../../../assets/images/{{tupla[1].imagen}}.jpg"
+                                                    alt="Portada">
+                                                    <div style="font-weight: bold;">
+                                                        {{tupla[1].nombre}}
+                                                    </div>
+                                            </td>
+                                            <td style="width: 10vw; text-align: center;">
+                                                <img class="icono"
+                                                    src="../../../../assets/images/{{tupla[1].plataforma}}.png"
+                                                    alt="Icono Plataforma">
+                                                {{tupla[1].plataforma}}
+                                            </td>
+                                            <td style="width: 10vw; text-align: center;">
+                                                {{tupla[2]}}
+                                            </td>
+                                        </tbody>
+                                    </table>
+
+                                </ng-container>
+
+                            </td>
+
+
+                        </li>
+                    </ul>
+                </ul>
+            </div>
+        </div>
+
+
+
+
+
+    </div>
+
+</div>

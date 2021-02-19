@@ -1,0 +1,49 @@
+<div class="nav-side-menu">
+    <div class="brand">Vista previa</div>
+    <div id="vistaPreviaBox">
+        <div>
+            <!-- 
+             ██████  ██████  ███    ██     ███████ ████████  ██████   ██████ ██   ██ 
+            ██      ██    ██ ████   ██     ██         ██    ██    ██ ██      ██  ██  
+            ██      ██    ██ ██ ██  ██     ███████    ██    ██    ██ ██      █████   
+            ██      ██    ██ ██  ██ ██          ██    ██    ██    ██ ██      ██  ██  
+             ██████  ██████  ██   ████     ███████    ██     ██████   ██████ ██   ██
+            -->
+            <!-- SEGÚN EL STOCK LLAMO AL COMPONENTE QUE MUESTRA EL JUEGO SIN STOCK O PROSIGO -->
+            <ng-container *ngIf="juegoVistaPrevia.stock > 0; else sinStock">
+
+                <!-- SEGÚN LA LONGITUD DEL NOMBRE MOSTRAMOS JUEGO    o    JUEGO MOV -->
+                <ng-container *ngIf="juegoVistaPrevia.nombre.length > 15; else elseTemplate">
+                    <!-- JUEGO MOV -->
+                    <app-juego-mov [juego]="juegoVistaPrevia"></app-juego-mov>
+                </ng-container>
+
+                <ng-template #elseTemplate>
+                    <!-- JUEGO -->
+                    <app-juego [juego]="juegoVistaPrevia"></app-juego>
+                </ng-template>
+
+            </ng-container>
+
+            <!-- 
+            ███████ ██ ███    ██     ███████ ████████  ██████   ██████ ██   ██ 
+            ██      ██ ████   ██     ██         ██    ██    ██ ██      ██  ██  
+            ███████ ██ ██ ██  ██     ███████    ██    ██    ██ ██      █████   
+                 ██ ██ ██  ██ ██          ██    ██    ██    ██ ██      ██  ██  
+            ███████ ██ ██   ████     ███████    ██     ██████   ██████ ██   ██ 
+            -->
+            <ng-template #sinStock>
+                <!-- SEGÚN LA LONGITUD DEL NOMBRE MOSTRAMOS JUEGO SIN STOCK    o    JUEGO SIN STOCK MOV -->
+                <ng-container *ngIf="juegoVistaPrevia.nombre.length > 15; else sinStockNoMov">
+                    <!-- JUEGO SIN STOCK MOV -->
+                    <app-juego-sin-stock-mov [juego]="juegoVistaPrevia"></app-juego-sin-stock-mov>
+                </ng-container>
+
+                <ng-template #sinStockNoMov>
+                    <!-- JUEGO SIN STOCK -->
+                    <app-juego-sin-stock [juego]="juegoVistaPrevia"></app-juego-sin-stock>
+                </ng-template>
+            </ng-template>
+        </div>
+    </div>
+</div>

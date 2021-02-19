@@ -1,0 +1,193 @@
+<div id="cuentaBox" class="card">
+    <!-- HE QUITADO EL ngSubmit Y HE PUESTO EL ngClick EN EL BOTON DE ALTA PORQUE SINO SALTABA LA VALIDACIÓN
+        DE CAMPOS AL PULSAR EL RESET YA QUE CONSIDERA AMBOS BOTONES COMO SUBMIT -->
+    <form #usuarioForm="ngForm">
+
+        <div class="card-content">
+
+
+
+
+
+            <!-- 
+            ██    ██ ███████ ███████ ██████  
+            ██    ██ ██      ██      ██   ██ 
+            ██    ██ ███████ █████   ██████  
+            ██    ██      ██ ██      ██   ██ 
+             ██████  ███████ ███████ ██   ██ 
+            -->    
+            <!-- EL USER NO DEJAMOS CAMBIARLO -->                    
+            <p>
+                Usuario:
+            </p>
+            <div class="apartadoForm">
+
+                <!-- MANDAMOS COMO HIDDEN: ID, USUARIO Y STATUS
+                AUNQUE ESTEMOS MOSTRANDO DE MANERA INDICATIVA EL USER, HAY QUE MANDARLO COMO HIDDEN SI O SI
+            PORQUE AL TENELOS DESHABILITADO EL FORMULARIO NO LO RECOGE -->
+                <input type="hidden" name="_id" #_id="ngModel"
+                    [(ngModel)]="objetoUsuariosService.usuarioSeleccionado._id">
+
+                <input type="hidden" name="status" #_id="ngModel"
+                    [(ngModel)]="objetoUsuariosService.usuarioSeleccionado.status">
+
+
+                <input type="hidden" name="user" #_id="ngModel"
+                    [(ngModel)]="objetoUsuariosService.usuarioSeleccionado.user">
+
+                <!-- ESTE ES EL USER QUE MOSTRAMOS DE MANERA INDICATIVA, FIJARSE QUE TIENE EL name DISTINTO AL QUE ENVIAMOS EN
+                HIDDEN, PORQUE SINO SE SOBREESCRIBE Y LO DETECTA COMO DISABLED, NO MANDÁNDOLO -->
+                <input class="white-text" type="text" name="userAux" #userAux="ngModel"
+                    [(ngModel)]="objetoUsuariosService.usuarioSeleccionado.user"
+                    placeholder="Introduzca su nombre de usuario, con el que iniciará sesión" disabled>
+
+            </div>
+
+
+
+
+            <!-- 
+            ██████   █████  ███████ ███████ 
+            ██   ██ ██   ██ ██      ██      
+            ██████  ███████ ███████ ███████ 
+            ██      ██   ██      ██      ██ 
+            ██      ██   ██ ███████ ███████ 
+            -->         
+            <!-- EL RESTO DE CAMPOS TIENEN DOS FORMAS, UNA DESHABILITADA CUANDO editando == false Y UNA HABILITADA
+            CUANDO editando == true -->       
+            <p>
+                Contraseña:
+            </p>
+
+            <ng-container *ngIf="editando; else sinEditarContra">
+                <div class="apartadoForm">
+                    <input class="white-text" type="password" name="pass" #nombre="ngModel"
+                        [(ngModel)]="objetoUsuariosService.usuarioSeleccionado.pass"
+                        placeholder="Introduzca su contraseña">
+                </div>
+            </ng-container>
+            <ng-template #sinEditarContra>
+                <div class="apartadoForm">
+                    <input class="white-text" type="password" name="pass" #nombre="ngModel"
+                        [(ngModel)]="objetoUsuariosService.usuarioSeleccionado.pass"
+                        placeholder="Introduzca su contraseña" disabled>
+                </div>
+            </ng-template>
+
+
+            <!-- 
+            ██████   █████  ███████ ███████     ██████  
+            ██   ██ ██   ██ ██      ██               ██ 
+            ██████  ███████ ███████ ███████      █████  
+            ██      ██   ██      ██      ██     ██      
+            ██      ██   ██ ███████ ███████     ███████ 
+            -->
+            <!-- ESTA SOLO SE MUESTRA CUANDO editando == true -->
+            <ng-container *ngIf="editando">
+                <p>
+                    Repita la contraseña:
+                </p>
+
+                <div class="apartadoForm">
+                    <input class="white-text" type="password" [(ngModel)]="pass2" name="pass2"
+                        placeholder="Repita la contraseña">
+                </div>
+            </ng-container>
+
+
+
+
+            <!-- 
+            ███    ██  ██████  ███    ███ ██████  ██████  ███████ 
+            ████   ██ ██    ██ ████  ████ ██   ██ ██   ██ ██      
+            ██ ██  ██ ██    ██ ██ ████ ██ ██████  ██████  █████   
+            ██  ██ ██ ██    ██ ██  ██  ██ ██   ██ ██   ██ ██      
+            ██   ████  ██████  ██      ██ ██████  ██   ██ ███████ 
+            -->                                       
+            <p>
+                Nombre:
+            </p>
+
+
+            <ng-container *ngIf="editando; else sinEditarNombre">
+                <div class="apartadoForm">
+                    <input class="white-text" type="text" name="nombre" #nombre="ngModel"
+                        [(ngModel)]="objetoUsuariosService.usuarioSeleccionado.nombre"
+                        placeholder="Introduzca su nombre">
+                </div>
+            </ng-container>
+            <ng-template #sinEditarNombre>
+                <div class="apartadoForm">
+                    <input class="white-text" type="text" name="nombre" #nombre="ngModel"
+                        [(ngModel)]="objetoUsuariosService.usuarioSeleccionado.nombre"
+                        placeholder="Introduzca su nombre" disabled>
+                </div>
+            </ng-template>
+
+
+
+            <!-- 
+             █████  ██████  ███████ ██      ██      ██ ██████   ██████  ███████ 
+            ██   ██ ██   ██ ██      ██      ██      ██ ██   ██ ██    ██ ██      
+            ███████ ██████  █████   ██      ██      ██ ██   ██ ██    ██ ███████ 
+            ██   ██ ██      ██      ██      ██      ██ ██   ██ ██    ██      ██ 
+            ██   ██ ██      ███████ ███████ ███████ ██ ██████   ██████  ███████ 
+             -->                                                    
+            <p>
+                Apellidos:
+            </p>
+
+            <ng-container *ngIf="editando; else sinEditarApellidos">
+                <div class="apartadoForm">
+                    <input class="white-text" type="text" name="apellidos" #nombre="ngModel"
+                        [(ngModel)]="objetoUsuariosService.usuarioSeleccionado.apellidos"
+                        placeholder="Introduzca sus apellidos">
+                </div>
+            </ng-container>
+            <ng-template #sinEditarApellidos>
+                <div class="apartadoForm">
+                    <input class="white-text" type="text" name="apellidos" #nombre="ngModel"
+                        [(ngModel)]="objetoUsuariosService.usuarioSeleccionado.apellidos"
+                        placeholder="Introduzca sus apellidos" disabled>
+                </div>
+            </ng-template>
+
+        </div>
+
+        <!-- 
+        ██████   ██████  ████████  ██████  ███    ██ ███████ ███████ 
+        ██   ██ ██    ██    ██    ██    ██ ████   ██ ██      ██      
+        ██████  ██    ██    ██    ██    ██ ██ ██  ██ █████   ███████ 
+        ██   ██ ██    ██    ██    ██    ██ ██  ██ ██ ██           ██ 
+        ██████   ██████     ██     ██████  ██   ████ ███████ ███████ 
+         -->                                          
+        <div class="card-action">
+            <div class="input-field col s12">
+
+
+                
+                <!-- BOTONES DURANTE EDICIÓN -->
+                <ng-container *ngIf="editando; else sinEditarBotones">
+                    <!-- BOTON GUARDAR CAMBIOS, EDITAR USUARIO -->
+                    <button id="btnGuardar" class="btn btn-primary right" (click)="editarUsuario(usuarioForm)">GUARDAR
+                        CAMBIOS</button>
+                    <!-- BOTÓN CANCELAR QUE VUELVE A LLAMAR AL METODO EDITAR() DE MODO QUE DEJA DE EDITAR -->
+                    <button id="btnCancelar" class="btn btn-primary right" (click)="editar()">CANCELAR</button>
+                </ng-container>
+
+
+                <!-- BOTONES SIN EDICIÓN -->
+                <ng-template #sinEditarBotones>
+                    <!-- BOTÓN EDITAR QUE LLAMA AL MÉTODO EDITAR() DE MODO QUE EDITA  -->
+                    <button id="btnEditar" class="btn btn-primary right" (click)="editar()">EDITAR DATOS</button>
+                    <!-- BOTÓN BAJA PARA DAR DE BAJA EL USUARIO -->
+                    <button id="btnBaja" class="btn btn-primary right" (click)="baja()">DARSE DE BAJA</button>
+                </ng-template>
+
+
+            </div>
+        </div>
+
+    </form>
+
+</div>

@@ -1,0 +1,62 @@
+/* EDITOR */
+#editorBox{
+  background-color: rgba(97, 137, 153, 0.603);
+  width: 41.5vw;
+  margin-top: 0.5vw;
+  margin: 0.5vw
+  }
+
+p{
+  padding-top: 1vw;
+  color: white;
+  font-weight: bold;
+}
+
+form button{
+  font-weight: bold;
+}
+  
+  /* LISTA */
+
+  #listaUsuariosBox{
+    background-color: rgba(238, 238, 238, 0);
+    width: 42.4vw;
+    margin-top: 0.5vw;
+  }
+  
+  td, th {
+    color: rgb(255, 255, 255);
+    font-size: 0.7vw;
+    border-bottom: 0.3vw solid #23282e;
+  }
+  
+  th {
+    font-weight: bold;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+  }
+  
+  .textoJustificado{
+    text-align: justify;
+    text-justify: inter-word;
+  }
+  
+  #btnAcciones button{
+    color: white;
+    font-size: 0.7vw;
+    background-color: rgba(255, 255, 255, 0);
+    width: 5vw;
+    height: 2.2vw;
+    margin-left: 1vw;
+    border: 0.1vw solid rgba(255, 255, 255, 0);
+  }
+  
+  #btnEditar:hover *{
+    color: rgb(226, 215, 66);
+  }
+  
+  #btnEliminar:hover *{
+    color: rgb(199, 66, 66);
+  }
+  
+  

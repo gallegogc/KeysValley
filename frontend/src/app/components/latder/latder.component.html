@@ -1,0 +1,61 @@
+<div id=latderBox>
+
+    <!-- 
+    ██       ██████   ██████  ██ ███    ██ 
+    ██      ██    ██ ██       ██ ████   ██ 
+    ██      ██    ██ ██   ███ ██ ██ ██  ██ 
+    ██      ██    ██ ██    ██ ██ ██  ██ ██ 
+    ███████  ██████   ██████  ██ ██   ████
+    -->
+    <!-- COMPONENTE LOGIN QUE SIEMPRE SE MUESTRA (CAMBIA LA VISTA DENTRO DE ÉL SEGÚN ESTAMOS LOGUEADOS O NO) -->
+    <!-- TIENE eventEmitter PARA RECIBIR:
+        - LOGED (PARA MOSTRAR CARRITO, OPCIONES)
+        - STATUS (PARA SABER SI MOSTRAR OPCIONES Y/O CARRITO, 
+                  PARA PASARSELO A OPCIONES)
+        - ID USUARIO (PARA PASARSELO A OPCIONES Y AL CARRITO) -->
+    <app-login (propagar)="recibir($event)"></app-login>
+
+
+    <!-- SI ESTAMOS LOGUEADOS VALORAMOS SI MOSTRAR CARRITO, VISTA PREVIA Y MOSTRAMOS OPCIONES -->
+    <ng-container *ngIf="loged">
+
+        <!-- 
+         ██████  █████  ██████  ██████  ██ ████████  ██████  
+        ██      ██   ██ ██   ██ ██   ██ ██    ██    ██    ██ 
+        ██      ███████ ██████  ██████  ██    ██    ██    ██ 
+        ██      ██   ██ ██   ██ ██   ██ ██    ██    ██    ██ 
+         ██████ ██   ██ ██   ██ ██   ██ ██    ██     ██████  
+         -->
+        <!-- MOSTRAMOS SÓLO EL CARRITO SI NO ERES ADMIN -->
+        <ng-container *ngIf="status==0">
+            <!-- PASAMOS EL ID USUARIO AL CARRITO PARA QUE PUEDA RECOGERLO POR QUERY -->
+            <app-carrito [idUsuario]="idUsuario" [formato]="formato"></app-carrito>
+        </ng-container>
+
+        <!--  
+         ██████  ██████   ██████ ██  ██████  ███    ██ ███████ ███████ 
+        ██    ██ ██   ██ ██      ██ ██    ██ ████   ██ ██      ██      
+        ██    ██ ██████  ██      ██ ██    ██ ██ ██  ██ █████   ███████ 
+        ██    ██ ██      ██      ██ ██    ██ ██  ██ ██ ██           ██ 
+         ██████  ██       ██████ ██  ██████  ██   ████ ███████ ███████
+        -->
+        <!-- MANDAMOS EL STATUS AL COMPONENTE OPCIONES PARA SABER QUÉ TIPO DE FUNCIONALIDADES DEBEMOS MOSTRAR AL USUARIO -->
+        <app-opciones [status]="status" [idUsuario]="idUsuario"></app-opciones>
+
+        <!-- 
+        ██    ██ ██ ███████ ████████  █████      ██████  ██████  ███████ ██    ██ ██  █████  
+        ██    ██ ██ ██         ██    ██   ██     ██   ██ ██   ██ ██      ██    ██ ██ ██   ██ 
+        ██    ██ ██ ███████    ██    ███████     ██████  ██████  █████   ██    ██ ██ ███████ 
+         ██  ██  ██      ██    ██    ██   ██     ██      ██   ██ ██       ██  ██  ██ ██   ██ 
+          ████   ██ ███████    ██    ██   ██     ██      ██   ██ ███████   ████   ██ ██   ██
+         -->
+        <!-- SI FLAG vistaPrevia == TRUE MOSTRAMOS EL COMPONENTE VISTA PREVIA -->
+        <ng-container *ngIf="vistaPrevia">
+            <app-vista-previa [juegoVistaPrevia]="juegoVistaPrevia"></app-vista-previa>
+        </ng-container>
+
+    </ng-container>
+
+
+
+</div>

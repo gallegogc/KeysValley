@@ -1,0 +1,18 @@
+<div id="juegoBox" class="card">
+    <!-- EL ICONO SE MUESTRA SEGÚN EL VALOR DE LA VARIABLE ICONPATH -->
+    <img class="icono" src="{{iconPath}}" alt="Icono Plataforma">
+    <!-- ngClick A MOSTRAR FICHA PARA MOSTRAR LA FICHA DEL JUEGO EN GRANDE EN EL MAIN -->
+    <div (click)="mostrarFicha()" class="imageDiv">
+        <!-- LA IMAGEN SE MUESTRA SEGÚN EL VALOR DE LA VARIABLE IMAGEPATH -->
+        <img class="card-img-top" src="{{imagePath}}" alt="Imagen juego">
+    </div>
+    <div class="card-body text-center">
+        <div id="tituloJuegoBox">
+            <div>
+                <h5 class="tituloJuego">{{juego.nombre}}</h5>
+            </div>
+        </div>
+        <p>{{juego.precio}}€ / <b>{{juego.lanzamiento}}</b></p>
+        <a href="#" class="boton btn btn-primary" disabled>Sin stock</a>
+    </div>
+</div>

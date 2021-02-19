@@ -1,0 +1,197 @@
+<!-- 
+███████ ██████  ██ ████████  █████  ███    ██ ██████   ██████  
+██      ██   ██ ██    ██    ██   ██ ████   ██ ██   ██ ██    ██ 
+█████   ██   ██ ██    ██    ███████ ██ ██  ██ ██   ██ ██    ██ 
+██      ██   ██ ██    ██    ██   ██ ██  ██ ██ ██   ██ ██    ██ 
+███████ ██████  ██    ██    ██   ██ ██   ████ ██████   ██████  
+-->
+<ng-container *ngIf="mostrarEditor">
+    <div id="editorBox" class="card">
+        <form #juegoForm="ngForm" (ngSubmit)="addJuego(juegoForm)">
+
+            <div class="card-content">
+                <div class="card-title white-text">Editando {{juegoEditando}}</div>
+                <br>
+                <!-- AL MÉTODO RELACIONADO CON ngSubmit HABRÁ QUE PASARLE EL FORMULARIO LUEGO -->
+
+                <p>
+                    Nombre:
+                </p>
+                <div class="apartadoForm">
+                    <!-- ESTE CAMPO OCULTO NOS PERMITE MANDAR EL ID SI LE DAMOS AL BOTÓN EDITAR
+                        DE TAL FORMA QUE EN EL MISMO FORMULARIO VAMOS A PODER DAR DE ALTA USUARIOS
+                        SI NO ENVIAMOS EL ID (SI NO LE DAMOS A EDITAR) Y EDITAR USUARIOS SI LE PASAMOS UN ID 
+                        (AL HACER CLIC EN EL ICONO EDITAR)  -->
+                    <input type="hidden" name="_id" #_id="ngModel"
+                        [(ngModel)]="objetoJuegosService.juegoSeleccionado._id">
+
+                    <input class="white-text" type="text" name="nombre" #nombre="ngModel"
+                        [(ngModel)]="objetoJuegosService.juegoSeleccionado.nombre"
+                        placeholder="Introduzca el nombre del videojuego">
+                    <!-- El ngModel APUNTA AL OBJETO DE LA CLASE EmpleadosServices QUE CREAMOS EN EL CONSTRUCTOR DEL TS DE ESTA VISTA -->
+                    <!-- empleadoSeleccionado ES EL OBJETO DE LA CLASE Empleado QUE TENEMOS INSTANCIADO EN EmpleadosService  -->
+                </div>
+
+                <p>
+                    Plataforma:
+                </p>
+                <div class="apartadoForm">
+                    <select style="display: block;" name="plataforma" #nombre="ngModel"
+                        [(ngModel)]="objetoJuegosService.juegoSeleccionado.plataforma"
+                        placeholder="Introduzca la plataforma en la que se ejecuta el videojuego">
+                        <option value="Steam">Steam</option>
+                        <option value="Playstation 5">Playstation 5</option>
+                        <option value="Playstation 4">Playstation 4</option>
+                        <option value="Xbox Series">Xbox Series X/S</option>
+                        <option value="Xbox One">Xbox One</option>
+                        <option value="Nintendo Switch">Nintendo Switch</option>
+                    </select>
+                </div>
+
+                <p>
+                    Género:
+                </p>
+                <div class="apartadoForm">
+                    <select style="display: block;" name="genero" #nombre="ngModel"
+                        [(ngModel)]="objetoJuegosService.juegoSeleccionado.genero"
+                        placeholder="Introduzca el género principal del videojuego">
+                        <option value="Acción">Acción</option>
+                        <option value="Aventura">Aventura</option>
+                        <option value="Cartas">cartas</option>
+                        <option value="Conducción">Conducción</option>
+                        <option value="Deportes">Deportes</option>
+                        <option value="Gestión">Gestión de Recursos</option>
+                        <option value="Life-like">Life-Like</option>
+                        <option value="Lucha">Lucha</option>
+                        <option value="Metroidvania">Metroidvania</option>
+                        <option value="Shooter">Shooter</option>
+                        <option value="Rogue-lite">Rogue-Lite</option>
+                        <option value="Rol">Rol</option>
+                    </select>
+                </div>
+
+                <p>
+                    Año de lanzamiento:
+                </p>
+                <div class="apartadoForm">
+                    <input class="white-text" type="number" min="1990" max="2030" step="1" name="lanzamiento"
+                        #nombre="ngModel" [(ngModel)]="objetoJuegosService.juegoSeleccionado.lanzamiento"
+                        placeholder="Introduzca el año de lanzamiento del videojuego">
+                </div>
+
+                <p>
+                    Desarrolladora:
+                </p>
+                <div class="apartadoForm">
+                    <input class="white-text" type="text" name="desarrolladora" #nombre="ngModel"
+                        [(ngModel)]="objetoJuegosService.juegoSeleccionado.desarrolladora"
+                        placeholder="Introduzca la empresa desarrolladora del videojuego">
+                </div>
+
+                <p>
+                    Reseña:
+                </p>
+                <div class="apartadoForm">
+                    <textarea class="white-text" type="text" name="resena" #nombre="ngModel"
+                        [(ngModel)]="objetoJuegosService.juegoSeleccionado.resena" placeholder="Introduzca la reseña" style="resize: vertical;"></textarea>
+                </div>
+
+                <p>
+                    Precio:
+                </p>
+                <div class="apartadoForm">
+                    <input class="white-text" type="number" min="0" max="9999999" step="1" name="precio"
+                        #nombre="ngModel" [(ngModel)]="objetoJuegosService.juegoSeleccionado.precio"
+                        placeholder="Introduzca el precio del videojuego">
+                </div>
+
+                <p>
+                    Stock:
+                </p>
+                <div class="apartadoForm">
+                    <input class="white-text" type="number" min="0" max="9999999" step="1" name="stock"
+                        #nombre="ngModel" [(ngModel)]="objetoJuegosService.juegoSeleccionado.stock"
+                        placeholder="Introduzca el nº de unidades del videojuego">
+                </div>
+
+                <p>
+                    Imagen:
+                </p>
+                <div class="apartadoForm">
+                    <input class="white-text" type="text" name="imagen" #nombre="ngModel"
+                        [(ngModel)]="objetoJuegosService.juegoSeleccionado.imagen"
+                        placeholder="Introduzca el nombre de la imagen del videojuego, debe estar ubicada en la carpeta assets">
+                </div>
+            </div>
+
+            <div class="card-action">
+                <div class="input-field">
+                    <button class="btn btn-primary right" (click)="salirEditar(juegoForm)">SALIR SIN
+                        GUARDAR</button>
+                    <button class="btn btn-primary right">GUARDAR CAMBIOS</button>
+                    <!-- EL ENVIAR NO HACE FALTA PONERLE NADA, RECOGE AUTOMATICAMENTE QUE ENVIA-->
+                </div>
+            </div>
+
+        </form>
+    </div>
+</ng-container>
+
+
+<!-- 
+███████ ██ ███    ██     ███████ ██████  ██ ████████  █████  ██████  
+██      ██ ████   ██     ██      ██   ██ ██    ██    ██   ██ ██   ██ 
+███████ ██ ██ ██  ██     █████   ██   ██ ██    ██    ███████ ██████  
+     ██ ██ ██  ██ ██     ██      ██   ██ ██    ██    ██   ██ ██   ██ 
+███████ ██ ██   ████     ███████ ██████  ██    ██    ██   ██ ██   ██ 
+ -->               
+ <!-- LA LISTA SIN EDITAR SE MUESTRA SIEMPRE -->                                         
+<div id="listaJuegosBox" class="card">
+    <table>
+        <thead>
+            <th>ACCIONES</th>
+            <th>NOMBRE</th>
+            <th>PLATAFORMA</th>
+            <th>GENERO</th>
+            <th>AÑO</th>
+            <th>DESARROLLADORA</th>
+            <th>RESEÑA</th>
+            <th>PRECIO</th>
+            <th>STOCK</th>
+        </thead>
+
+        <tbody>
+
+            <!-- NGFOR MOSTRANDO TODOS LOS JUEGOS DEL ARRAY DE JUEGOS DEL JUEGOSERVICE -->
+            <tr *ngFor="let juego of objetoJuegosService.juegos">
+
+                <td id="btnAcciones">
+                    <!-- LLAMAMOS A EDITAR JUEGO PASÁNDOLE EL OBJETO DEL JUEGO EN CONCRETO -->
+                    <button id="btnEditar" (click)="editarJuego(juego)">
+                        <i class="material-icons fa-lg">edit</i> <span> Editar</span>
+                    </button>
+                    <button id="btnEliminar" (click)="eliminarJuego(juego)">
+                        <i class="material-icons fa-lg">delete</i> <span> Eliminar</span>
+                    </button>
+                </td>
+
+                <td style="text-align: center; max-width: 4.5vw; overflow: hidden;">
+                    <img class="portada" src="../../../../assets/images/{{juego.imagen}}.jpg" alt="Portada">
+                    {{juego.nombre}}
+                </td>
+                <td style="width: 10vw; text-align: center;">
+                    <img class="icono" src="../../../../assets/images/{{juego.plataforma}}.png" alt="Icono Plataforma">
+                    {{juego.plataforma}}
+                </td>
+
+                <td style="width: 5vw; text-align: center;">{{juego.genero}}</td>
+                <td style="width: 6vw; text-align: center;">{{juego.lanzamiento}}</td>
+                <td style="width: 6vw; text-align: center;">{{juego.desarrolladora}}</td>
+                <td class="textoJustificado">{{juego.resena}}</td>
+                <td style="width: 6vw; text-align: center;">{{juego.precio}} €</td>
+                <td style="width: 6vw; text-align: center;">{{juego.stock}} unidades</td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>

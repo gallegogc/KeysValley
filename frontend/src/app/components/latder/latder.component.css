@@ -1,0 +1,9 @@
+#latderBox{
+    height: 43vw;
+    width: 12vw;
+    float: left;
+    background-color: #2e353d;
+    overflow-y: auto;
+}
+
+

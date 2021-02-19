@@ -1,0 +1,112 @@
+<ng-container *ngIf="mostrarEditor">
+
+    <div id="editorBox" class="card">
+        <form #usuarioForm="ngForm">
+
+            <div class="card-content">
+                <div class="card-title white-text">Editando {{usuarioEditando}}</div>
+                <br>
+                <!-- AL MÉTODO RELACIONADO CON ngSubmit HABRÁ QUE PASARLE EL FORMULARIO LUEGO -->
+                <p>
+                    Usuario:
+                </p>
+                <div class="apartadoForm">
+                    <!-- ESTE CAMPO OCULTO NOS PERMITE MANDAR EL ID SI LE DAMOS AL BOTÓN EDITAR
+                        DE TAL FORMA QUE EN EL MISMO FORMULARIO VAMOS A PODER DAR DE ALTA USUARIOS
+                        SI NO ENVIAMOS EL ID (SI NO LE DAMOS A EDITAR) Y EDITAR USUARIOS SI LE PASAMOS UN ID 
+                        (AL HACER CLIC EN EL ICONO EDITAR)  -->
+                    <input type="hidden" name="_id" #_id="ngModel"
+                        [(ngModel)]="objetoUsuariosService.usuarioSeleccionado._id">
+
+                    <input class="white-text" type="text" name="user" #nombre="ngModel"
+                        [(ngModel)]="objetoUsuariosService.usuarioSeleccionado.user"
+                        placeholder="Introduzca el user name del usuario">
+                    <!-- El ngModel APUNTA AL OBJETO DE LA CLASE EmpleadosServices QUE CREAMOS EN EL CONSTRUCTOR DEL TS DE ESTA VISTA -->
+                    <!-- empleadoSeleccionado ES EL OBJETO DE LA CLASE Empleado QUE TENEMOS INSTANCIADO EN EmpleadosService  -->
+                </div>
+
+                <p>
+                    Contraseña:
+                </p>
+                <div class="apartadoForm">
+                    <input class="white-text" type="text" name="pass" #nombre="ngModel"
+                        [(ngModel)]="objetoUsuariosService.usuarioSeleccionado.pass"
+                        placeholder="Introduzca la pass del usuario">
+                </div>
+
+                <p>
+                    Nombre:
+                </p>
+                <div class="apartadoForm">
+                    <input class="white-text" type="text" name="nombre" #nombre="ngModel"
+                        [(ngModel)]="objetoUsuariosService.usuarioSeleccionado.nombre"
+                        placeholder="Introduzca el nombre del usuario">
+                </div>
+
+                <p>
+                    Apellidos:
+                </p>
+                <div class="apartadoForm">
+                    <input class="white-text" type="text" name="apellidos" #nombre="ngModel"
+                        [(ngModel)]="objetoUsuariosService.usuarioSeleccionado.apellidos"
+                        placeholder="Introduzca los apellidos del usuario">
+                </div>
+
+                <p>
+                    Status:
+                </p>
+                <div class="apartadoForm">
+                    <input class="white-text" type="number" min="0" max="2" step="1" name="status" #nombre="ngModel"
+                        [(ngModel)]="objetoUsuariosService.usuarioSeleccionado.status"
+                        placeholder="Introduzca el status del usuario (0: Usuario, 1: Administrador, 2: Dado de baja)">
+                </div>
+            </div>
+
+            <div class="card-action">
+                <div class="input-field">
+                    <button class="btn btn-primary right" (click)="salirEditar(usuarioForm)">SALIR SIN
+                        GUARDAR</button>
+                    <button class="btn btn-primary right" (click)="addUsuario(usuarioForm)">GUARDAR
+                        CAMBIOS</button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</ng-container>
+
+
+
+<div id="listaUsuariosBox">
+    <table>
+        <thead>
+            <th>ACCIONES</th>
+            <th>USUARIO</th>
+            <th>CONTRASEÑA</th>
+            <th>NOMBRE</th>
+            <th>APELLIDOS</th>
+            <th>STATUS</th>
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let usuario of objetoUsuariosService.usuarios">
+
+                <td id="btnAcciones" style="width: 2vw; text-align: center;">
+                    <!-- LLAMAMOS A EDITAR JUEGO PASÁNDOLE EL OBJETO DEL JUEGO EN CONCRETO -->
+                    <button id="btnEditar" (click)="editarUsuario(usuario)">
+                        <i class="material-icons fa-lg">edit</i> <span> Editar</span>
+                    </button>
+                    <button id="btnEliminar" (click)="eliminarUsuario(usuario)">
+                        <i class="material-icons fa-lg">delete</i> <span> Eliminar</span>
+                    </button>
+                </td>
+                <td style="text-align: center;">{{usuario.user}}</td>
+                <td style="text-align: center;">{{usuario.pass}}</td>
+                <td style="1px;text-align: center;">{{usuario.nombre}}</td>
+                <td style="1px;text-align: center;">{{usuario.apellidos}}</td>
+                <td style="1px; text-align: center;">{{usuario.status}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>

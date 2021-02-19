@@ -1,0 +1,46 @@
+
+/* VENTANA DE REGISTRO */
+#bienvenidaBox{
+    background-color: rgb(85, 102, 116);
+    color: white;
+    font-size: 0.8vw;
+    padding: 0.5vw;
+    width: 42.5vw;
+    height: fit-content;
+}
+
+  p{
+    padding-top: 1vw;
+    color: white;
+  }
+
+.titulo{
+    text-align: center;
+    text-decoration: underline 0.1vw white;
+    font-weight: bold;
+}
+
+.descripcionFuncionalidad{
+    width: 15vw;
+    height: fit-content;
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+img{
+    float: left;
+    border-radius: 0.2vw;
+    margin-left: 3vw;
+    margin-right: 3vw;
+    width: 24vw;
+    height: 15vw;
+    position: absolute;
+    top: 3.5vw;
+    left: 14vw;
+}
+
+div{
+    text-align: center;
+    align-items: center;
+    height: fit-content;
+}

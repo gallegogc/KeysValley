@@ -1,0 +1,84 @@
+<div class="opcionesBox" style="position:relative; top: -0.7vw">
+  <div class="nav-side-menu">
+    <div class="brand">OPCIONES</div>
+    <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
+
+    <div class="menu-list">
+
+
+      <!-- 
+      ██    ██ ███████ ██    ██  █████  ██████  ██  ██████  
+      ██    ██ ██      ██    ██ ██   ██ ██   ██ ██ ██    ██ 
+      ██    ██ ███████ ██    ██ ███████ ██████  ██ ██    ██ 
+      ██    ██      ██ ██    ██ ██   ██ ██   ██ ██ ██    ██ 
+       ██████  ███████  ██████  ██   ██ ██   ██ ██  ██████  
+     -->
+
+      <!-- FUNCIONES DE USUARIO, SI STATUS = 0 -->
+      <ng-container *ngIf="status==0 ; else admin">
+        <ul id="menu-content" class="menu-content">
+
+          <li (click)="carrito()">
+            <a href="#">
+              <i class="fa fa-shopping-cart fa-lg"></i> Ver carrito
+            </a>
+          </li>
+
+          <li (click)="compras()">
+            <a href="#">
+              <i class="fa fa-folder fa-lg"></i> Compras
+            </a>
+          </li>
+
+          <li (click)="cuenta()">
+            <a href="#">
+              <i class="fa fa-wrench fa-lg"></i> Cuenta
+            </a>
+          </li>
+
+        </ul>
+      </ng-container>
+
+      <!-- 
+           █████  ██████  ███    ███ ██ ███    ██ 
+          ██   ██ ██   ██ ████  ████ ██ ████   ██ 
+          ███████ ██   ██ ██ ████ ██ ██ ██ ██  ██ 
+          ██   ██ ██   ██ ██  ██  ██ ██ ██  ██ ██ 
+          ██   ██ ██████  ██      ██ ██ ██   ████ 
+       -->
+
+      <!-- FUNCIONES DE ADMINISTRADOR, SI STATUS DISTINTO DE 0 -->
+      <ng-template #admin>
+        <ul id="menu-content" class="menu-content collapse out">
+
+          <li (click)="addJuego()">
+            <a href="#">
+              <i class="fa fa-plus fa-lg"></i> Alta videojuegos
+            </a>
+          </li>
+
+          <li (click)="listaJuegos()">
+            <a href="#">
+              <i class="fa fa-gamepad fa-lg"></i> Videojuegos
+            </a>
+          </li>
+
+          <li (click)="listaUsuarios()">
+            <a href="#">
+              <i class="fa fa-user fa-lg"></i> Usuarios
+            </a>
+          </li>
+
+          <li (click)="listaVentas()">
+            <a href="#">
+              <i class="fa fa-shopping-cart fa-lg"></i> Ventas
+            </a>
+          </li>
+
+        </ul>
+      </ng-template>
+
+
+    </div>
+  </div>
+</div>
